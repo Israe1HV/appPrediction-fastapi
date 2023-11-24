@@ -1,0 +1,23 @@
+virtualenv venv
+
+python -m venv venv
+venv\Scripts\activate.bat
+
+pip freeze > .\requeriments.txt
+
+pip install -r requeriments.txt
+
+---
+Ejecutar el python solo del modelo de prediccion
+python modelPredict/predict_LSTM_RNNA.py
+
+--------------
+uvicorn  main:app --reload
+
+---Problemas de tensorflow
+El problema es que la ruta del archivo que mencionas es más larga que la longitud máxima de la ruta MAX_PATH, definida como 260 caracteres.
+
+Para solucionar este problema, abra PowerShell como administrador y ejecute el siguiente comando:
+
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
+-Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
